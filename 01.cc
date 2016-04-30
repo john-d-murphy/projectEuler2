@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-
 // As simple as you can do it - fizz buzz
 
 int main() {
