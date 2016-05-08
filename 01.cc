@@ -39,10 +39,8 @@ int main() {
   long n;
   cin >> testCases;
   for (int testCase = 0; testCase < testCases ; testCase++ ) {
-    while (cin >> n ) {
       long sum = sumUnderValue(3,n) + sumUnderValue(5,n) - sumUnderValue(15,n);
       cout << sum << endl;
-    }
   }
   return 0;
 }
