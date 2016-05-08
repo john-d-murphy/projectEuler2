@@ -1,11 +1,9 @@
-#include <iostream>
 #include <cmath>
-#include <math.h>
-
-using std::cout;
-using std::cin;
-using std::endl;
-using std::fixed;
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
 /*
 Problem:
@@ -22,18 +20,28 @@ Problem:
    Below is a naive implementation, but it solves the problem quickly, and without the
    stack expense of a recursive solution. Not a good solution.
 */
-int main() {
-  double term1 = 1;
-  double term2 = 1;
-  double sum = 0;
-  while (term1 + term2 < 4000000) {
-      double tempTerm = term1 + term2;
-      if ( fmod(tempTerm,2) == 0) {
-        sum += tempTerm;
-      }
-      term1 = term2;
-      term2 = tempTerm;
+
+long fibbonaciEvenSum(long numberToFindSumUnder) {
+  long term1 = 1;
+  long term2 = 1;
+  long sum = 0;
+  while (term1 + term2 < numberToFindSumUnder) {
+    long tempTerm = term1 + term2;
+    if ( tempTerm % 2 == 0) {
+      sum += tempTerm;
+    }
+    term1 = term2;
+    term2 = tempTerm;
   }
-  cout << "Result: " << fixed << sum << endl;
-  cin.get();
+  return sum;
+}
+
+int main() {
+  int testCases;
+  long testValue;
+  cin >> testCases;
+  for (int testCase = 0; testCase < testCases ; testCase++ ) {
+    cin >> testValue;
+    cout << fibbonaciEvenSum(testValue) << endl;
+  }
 }
