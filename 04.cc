@@ -27,7 +27,6 @@ int numberOfDigits(int numberToCheck) {
   return floor(log10(numberToCheck)) + 1;
 }
 
-
 vector<int> getPalindromes() {
   vector<int> palindromes;
 
