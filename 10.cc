@@ -57,6 +57,7 @@ void sieveOfEratosthenes(int maxInt, bool primes[]) {
   }
 }
 
+
 int main() {
   int testCases;
   int testValue;
