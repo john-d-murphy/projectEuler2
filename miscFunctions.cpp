@@ -8,3 +8,17 @@ int greatestCommonDivisor(int a, int b) {
 int leastCommonMultiple(int a, int b) {
     return (a/greatestCommonDivisor(a,b)) * b;
 }
+
+void sieveOfEratosthenes(int maxInt, bool primes[]) {
+  for (int i = 0 ; i < maxInt ; i++) {
+    primes[i] = true;
+  }
+
+  for (int i = 2; i <= maxInt; i++) {
+    if (primes[i] == true) {
+      for (int j = i+i; j <= maxInt; j+=i) {
+        primes[j] = false;
+      }
+    }
+  }
+}
