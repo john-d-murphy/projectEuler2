@@ -52,6 +52,9 @@ long long collatzSequence(long long n) {
   long long sequenceLength = 0;
   long long extraNumbers = 0;
 
+  // If we are going over our max memory usage,
+  // figure out the length of the path for these
+  // oversized numbers.
   while (n > maxTestValue) {
     extraNumbers++;
     if (n % 2 == 0) {
@@ -63,7 +66,6 @@ long long collatzSequence(long long n) {
 
   if (n == 1) {
     sequenceLength += 1;
-    //cout << endl << "N: " << n << "\tLength: " << sequenceLength;
   } else if (sequenceLengths[n] > 0) {
     sequenceLength += sequenceLengths[n] + extraNumbers;
   } else if (n % 2 == 0) {
