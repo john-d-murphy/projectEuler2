@@ -44,23 +44,12 @@ Sample Output
 19 */
 
 long long maxTestValue = 5 * pow(10,6);
-//long long maxTestValue = 10;
-//long long maxTestValue = 20;
 vector<long long> sequenceLengths(maxTestValue+1);
 vector<long long> longestSequence(maxTestValue+1);
 
 long long collatzSequence(long long n) {
 
   long long sequenceLength = 0;
-
-  /*
-  if (n <= maxTestValue) {
-    cout << n << " " ;
-  } else {
-    cout << "[" << n << "] ";
-  } */
-
-  //long long sequenceLength = 0;
   long long extraNumbers = 0;
 
   while (n > maxTestValue) {
@@ -70,13 +59,6 @@ long long collatzSequence(long long n) {
     } else {
       n = 3*n + 1;
     }
-
-    /*
-    if (n <= maxTestValue) {
-      cout << n << ":" << extraNumbers << " ";
-    } else {
-      cout << "[" << n << "]:"<< extraNumbers << " ";
-    } */
   }
 
   if (n == 1) {
@@ -84,33 +66,13 @@ long long collatzSequence(long long n) {
     //cout << endl << "N: " << n << "\tLength: " << sequenceLength;
   } else if (sequenceLengths[n] > 0) {
     sequenceLength += sequenceLengths[n] + extraNumbers;
-
-    /*
-    cout << endl << "N: " << n << "\tFound at " << n << "\tLength: " << sequenceLengths[n] \
-         << "\tCurrent Length: " << sequenceLength \
-          << "\tExtra Numbers: " << extraNumbers;
-    */
-
   } else if (n % 2 == 0) {
     sequenceLength = 1 + collatzSequence(n/2) + extraNumbers;
-
-    /*
-    cout << endl << "N: " << n << "\tSeq: "<< sequenceLength \
-        << "\tExtra: " << extraNumbers << "\tRecursion into: " << n/2 << endl;
-    */
     sequenceLengths[n] = sequenceLength - extraNumbers;
   } else {
     sequenceLength = 1 + collatzSequence(3*n + 1) + extraNumbers;
-
-    /*
-    cout << endl << "N: " << n << "\tSeq: "<< sequenceLength \
-        << "\tExtra: "<< extraNumbers << "\tRecursion into: " << 3*n+1 << endl;
-    */
     sequenceLengths[n] = sequenceLength - extraNumbers;
   }
-  //cout << "N: " << n << "\tResult: " << sequenceLength << endl;
-  //cout << " <" << sequenceLength << "<" ;
-  //cout << endl;
   return sequenceLength;
 }
 
@@ -122,41 +84,15 @@ int main() {
   long size;
   collatzSequence(1);
   longestSequence[1] = 1;
-  //cout << endl;
-  /*
-  cout << "Sequence for 974079" << endl;
-  long long slen  = collatzSequence(974079);
-  cout << "Length: " << slen << endl;
-  cout << "---------------------" << endl;
-  return 0;
-  */
-  for (long i = 500000; i <= maxTestValue; i++) {
-  //for (long i = 971774; i <= 971775; i++) {
-  //cout << "---------------------" << endl;
-  //for (long i = 2; i <= maxTestValue; i++) {
-  //for (long long i = 606000; i <= 606207; i++) {
-  //for (long long i = 606078; i <= 606079; i++) {
-    //for (long i = 2; i <= 5; i++) {
-    //cout << "Sequence for " << i << ": ";
+  for (long i = 2; i <= maxTestValue; i++) {
     long thisSequenceLength = collatzSequence(i);
     sequenceLengths[i] == thisSequenceLength;
-    //cout << "Length: " << thisSequenceLength << endl;
     long long previousLargest = longestSequence[i-1];
     if (sequenceLengths[previousLargest] > sequenceLengths[i]) {
       longestSequence[i] = previousLargest;
     } else {
       longestSequence[i] = i;
     }
-
-    /*
-    if ( i % 10000 == 0 ) {
-    cout << "N: " << i << "\t\t\tLength: " << sequenceLengths[i] << "\t" \
-    << "Longest Sequence: " << longestSequence[i] << "\t" \
-    << "Longest Sequence Length: " << sequenceLengths[longestSequence[i]] << endl;
-    //sequenceLengths[longestSequence[i]] << " "  << longestSequence[i] << endl;
-    }
-    //cout << "---------------------" << endl;
-    */
   }
   cin >> testCases;
   for (int testCase = 0; testCase < testCases ; testCase++ ) {
