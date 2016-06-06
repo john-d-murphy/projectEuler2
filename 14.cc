@@ -88,7 +88,6 @@ int main() {
   longestSequence[1] = 1;
   for (long i = 2; i <= maxTestValue; i++) {
     long thisSequenceLength = collatzSequence(i);
-    sequenceLengths[i] == thisSequenceLength;
     long long previousLargest = longestSequence[i-1];
     if (sequenceLengths[previousLargest] > sequenceLengths[i]) {
       longestSequence[i] = previousLargest;
