@@ -40,17 +40,16 @@ vector<int> multiplyByTwo(vector<int> value) {
   vector<int> newValue;
   int vectorSize = value.size();
   for (int i = 0; i < vectorSize; i++) {
-    int placeValue = value[i];
 
     // Get what this digit's double is
-    int multiple = placeValue * 2;
+    int multiple = value[i] * 2;
 
     // Add it to our current working overflow
-    int charValue = overflow + multiple;
-    int digit = charValue % 10;
+    int placeValue = overflow + multiple;
+    int digit = placeValue % 10;
 
     // Get new overflow value
-    overflow = (charValue - charValue % 10)/10;
+    overflow = (placeValue - placeValue % 10)/10;
 
     // Prepend new digit
     newValue.push_back(digit);
@@ -69,23 +68,20 @@ long sumDigits(int powerOfTwo) {
   vector<int> value = powersOfTwo[powerOfTwo];
   long sum = 0;
   for (int i = 0; i < value.size(); i++) {
-    long placeValue = value[i];
-    sum += placeValue;
+    sum += value[i];
   }
   return sum;
 }
 
 int main() {
   // Precompute
-
   powersOfTwo[0].push_back(1);
   for (int i = 1 ; i <= 10000; i++) {
     vector<int> value = powersOfTwo[i-1];
-    vector<int> result = multiplyByTwo(value);
-    powersOfTwo[i] = result;
-    long sum = sumDigits(i);
-    sumOfDigits[i] = sum;
+    powersOfTwo[i] = multiplyByTwo(value);
+    sumOfDigits[i] = sumDigits(i);
   }
+
   // Run TestCases
   int testCases;
   cin >> testCases;
