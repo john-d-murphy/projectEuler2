@@ -34,44 +34,15 @@ Sample Output
 */
 
 vector< vector<unsigned long long> > paths(501, vector<unsigned long long>(501));
-unsigned long long modulo = pow(10,9) + 7;
-vector<unsigned long long> factorial(501, 1);
+unsigned long long magicNumber = pow(10,9) + 7;
 
-bool outOfBounds(int n, int m) {
-    if (n < 0 || m < 0) {
-      return true;
-    }
-    return false;
-}
 
-/*
-unsigned long long numberOfPaths(int n, int m) {
-    unsigned long long pathLength = 0;
-    if (n == 0 && m == 0) {
-      pathLength = 0;
-    } else if (outOfBounds(n,m)) {
-      pathLength = 0;
-    } else if (n == 1 && m == 0) {
-      return 1;
-    } else if (n == 0 && m == 1) {
-      return 1;
-    } else if (paths[n][m] != 0) {
-      pathLength = paths[n][m];
-    } else {
-      pathLength = paths[n][m];
-      pathLength = numberOfPaths(n-1,m) + numberOfPaths(n,m-1);
-      paths[n][m] = pathLength;
-    }
-    return pathLength;
-}*/
-
-void numberOfPaths(int n, int k) {
-  // multiplicative binomial coefficient algorithm
+unsigned long long numberOfPaths(int n, int k) {
   unsigned long long c = 1;
   for (int i = 0; i < k; i++ ) {
      c = c * (n-i) / (i+1);
   }
-  paths[n-k][k] = c;
+  return c;
 }
 
 int main() {
@@ -81,18 +52,20 @@ int main() {
   int m;
   for (int i = 1 ; i <= 500 ; i++) {
     for (int j = 1 ; j <= 500; j++) {
-      numberOfPaths(i+j,i);
+      paths[i][j] = numberOfPaths(i+j,j);
     }
   }
   cout << paths[500][500] << endl;
-  cout << paths[500][500] % modulo << endl;
+  cout << paths[500][500] % magicNumber << endl;
   cout << paths[20][20] << endl;
+  cout << 977899703 % magicNumber << endl;
+  cout << magicNumber % 977899703 << endl;
 
   for (int i = 0 ; i < testCases ; i++ ) {
     int n;
     int m;
     cin >> n >> m;
-    unsigned long long result = paths[n][m] % modulo;
+    unsigned long long result = paths[n][m] % magicNumber;
     cout << result << endl;
   }
 }
