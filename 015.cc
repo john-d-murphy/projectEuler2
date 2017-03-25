@@ -36,7 +36,6 @@ Sample Output
 vector< vector<unsigned long long> > paths(501, vector<unsigned long long>(501));
 unsigned long long magicNumber = pow(10,9) + 7;
 
-
 unsigned long long numberOfPaths(int n, int k) {
   unsigned long long c = 1;
   for (int i = 0; i < k; i++ ) {
@@ -55,11 +54,6 @@ int main() {
       paths[i][j] = numberOfPaths(i+j,j);
     }
   }
-  cout << paths[500][500] << endl;
-  cout << paths[500][500] % magicNumber << endl;
-  cout << paths[20][20] << endl;
-  cout << 977899703 % magicNumber << endl;
-  cout << magicNumber % 977899703 << endl;
 
   for (int i = 0 ; i < testCases ; i++ ) {
     int n;

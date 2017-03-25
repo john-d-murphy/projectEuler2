@@ -1,8 +1,8 @@
+#include <algorithm>
 #include <cmath>
 #include <cstdio>
-#include <vector>
 #include <iostream>
-#include <algorithm>
+#include <vector>
 using namespace std;
 
 /*
@@ -27,7 +27,7 @@ long fibbonaciEvenSum(long numberToFindSumUnder) {
   long sum = 0;
   while (term1 + term2 < numberToFindSumUnder) {
     long tempTerm = term1 + term2;
-    if ( tempTerm % 2 == 0) {
+    if (tempTerm % 2 == 0) {
       sum += tempTerm;
     }
     term1 = term2;
@@ -40,7 +40,7 @@ int main() {
   int testCases;
   long testValue;
   cin >> testCases;
-  for (int testCase = 0; testCase < testCases ; testCase++ ) {
+  for (int testCase = 0; testCase < testCases; testCase++) {
     cin >> testValue;
     cout << fibbonaciEvenSum(testValue) << endl;
   }

@@ -1,9 +1,9 @@
+#include <algorithm>
 #include <cmath>
 #include <cstdio>
-#include <vector>
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <vector>
 using namespace std;
 
 /*
@@ -40,7 +40,6 @@ vector<int> multiplyByTwo(vector<int> value) {
   vector<int> newValue;
   int vectorSize = value.size();
   for (int i = 0; i < vectorSize; i++) {
-
     // Get what this digit's double is
     int multiple = value[i] * 2;
 
@@ -49,7 +48,7 @@ vector<int> multiplyByTwo(vector<int> value) {
     int digit = placeValue % 10;
 
     // Get new overflow value
-    overflow = (placeValue - placeValue % 10)/10;
+    overflow = (placeValue - placeValue % 10) / 10;
 
     // Prepend new digit
     newValue.push_back(digit);
@@ -76,8 +75,8 @@ long sumDigits(int powerOfTwo) {
 int main() {
   // Precompute
   powersOfTwo[0].push_back(1);
-  for (int i = 1 ; i <= 10000; i++) {
-    vector<int> value = powersOfTwo[i-1];
+  for (int i = 1; i <= 10000; i++) {
+    vector<int> value = powersOfTwo[i - 1];
     powersOfTwo[i] = multiplyByTwo(value);
     sumOfDigits[i] = sumDigits(i);
   }
@@ -85,7 +84,7 @@ int main() {
   // Run TestCases
   int testCases;
   cin >> testCases;
-  for (int testCase = 0; testCase < testCases ; testCase++ ) {
+  for (int testCase = 0; testCase < testCases; testCase++) {
     int testValue;
     cin >> testValue;
     cout << sumOfDigits[testValue] << endl;

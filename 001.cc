@@ -1,8 +1,8 @@
+#include <algorithm>
 #include <cmath>
 #include <cstdio>
-#include <vector>
 #include <iostream>
-#include <algorithm>
+#include <vector>
 using namespace std;
 
 /*
@@ -27,10 +27,10 @@ Constraints
 */
 
 long sumUnderValue(long difference, long valueToFindUnder) {
-  long numberOfTerms = (valueToFindUnder - 1)/difference;
+  long numberOfTerms = (valueToFindUnder - 1) / difference;
   long firstValue = difference;
   long lastValue = numberOfTerms * difference;
-  long sumUnderValue = (numberOfTerms * (firstValue + lastValue))/2;
+  long sumUnderValue = (numberOfTerms * (firstValue + lastValue)) / 2;
   return sumUnderValue;
 }
 
@@ -38,9 +38,9 @@ int main() {
   int testCases;
   long n;
   cin >> testCases;
-  for (int testCase = 0; testCase < testCases ; testCase++ ) {
-      long sum = sumUnderValue(3,n) + sumUnderValue(5,n) - sumUnderValue(15,n);
-      cout << sum << endl;
+  for (int testCase = 0; testCase < testCases; testCase++) {
+    long sum = sumUnderValue(3, n) + sumUnderValue(5, n) - sumUnderValue(15, n);
+    cout << sum << endl;
   }
   return 0;
 }
